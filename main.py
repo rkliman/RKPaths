@@ -21,9 +21,9 @@ def main():
     q_g = np.array([15,0,0,0])
 
     path, length = path.PlanPath(q_s,q_g)
+    plt.plot(path[0,:],path[1,:],'r.')
     plt.plot(q_s[0],q_s[1],'g*')
     plt.plot(q_g[0],q_g[1],'r*')
-    plt.plot(path[0,:],path[1,:],'r-')
     plt.axis('equal')
     plt.show()
 

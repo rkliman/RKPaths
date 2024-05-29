@@ -45,9 +45,9 @@ def euler_spiral_point(L,sig):
     return np.array([CS, SS])
 
 def eulerspiral(L_start, L_end, sig):
-    path = np.zeros((2, 10))
-    vals = np.linspace(L_start, L_end, 10)
-    for i in range(10):
+    path = np.zeros((2, 20))
+    vals = np.linspace(L_start, L_end, 20)
+    for i in range(0,20):
         CS, _ = integrate.quad(lambda x: np.cos(sig * x*x / 2), 0, vals[i])
         SS, _ = integrate.quad(lambda x: np.sin(sig * x*x / 2), 0, vals[i])
         path[:, i] = np.array([CS, SS])
@@ -66,5 +66,5 @@ def Tf(T,theta):
 
 def get_new_sigma(delta, r, mu):
     Cf, _ = integrate.quad(lambda x: np.cos(np.pi*x*x/2), 0, np.sqrt(delta/np.pi))
-    Sf, _ = integrate.quad(lambda x: np.cos(np.pi*x*x/2), 0, np.sqrt(delta/np.pi))
-    return (np.pi*(np.cos(delta/2)*Cf+np.sin(delta/2)*Sf)**2)/(r*r*np.sin(delta/2+mu)*np.sin(delta/2+mu))
+    Sf, _ = integrate.quad(lambda x: np.sin(np.pi*x*x/2), 0, np.sqrt(delta/np.pi))
+    return (np.pi*(np.cos(delta/2)*Cf+np.sin(delta/2)*Sf)**2)/(r*r*np.sin((delta/2)+mu)*np.sin((delta/2)+mu))
