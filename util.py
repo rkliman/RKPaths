@@ -59,6 +59,9 @@ def arc_from_angles(center, radius, theta_start, theta_end, step):
     y = center[1] + radius * np.sin(theta)
     return np.vstack((x, y))
 
+def straight_path(p1, p2):
+    return np.array([np.linspace(p1[0],p2[0],10), np.linspace(p1[1],p2[1],10)]), eucdist2(p1,p2)
+
 def Tf(T,theta):
     return np.array([[np.cos(theta), -np.sin(theta), T[0]],
                      [np.sin(theta),  np.cos(theta), T[1]],
