@@ -1,5 +1,11 @@
 import numpy as np
 import scipy.integrate as integrate
+from dataclasses import dataclass
+
+@dataclass
+class Path:
+    points: np.array
+    length: float
 
 def eucdist2(p1, p2):
     return np.linalg.norm(p2-p1)
@@ -60,7 +66,7 @@ def arc_from_angles(center, radius, theta_start, theta_end, step):
     return np.vstack((x, y))
 
 def straight_path(p1, p2):
-    return np.array([np.linspace(p1[0],p2[0],10), np.linspace(p1[1],p2[1],10)]), eucdist2(p1,p2)
+    return Path(np.array([np.linspace(p1[0],p2[0],10), np.linspace(p1[1],p2[1],10)]), eucdist2(p1,p2))
 
 def Tf(T,theta):
     return np.array([[np.cos(theta), -np.sin(theta), T[0]],
